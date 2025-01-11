@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   def show
   end
 
-  def new 
+  def new
     @product = Product.new
   end
 
@@ -60,6 +60,4 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :description, :featured_image)
     end
-
-    
 end
