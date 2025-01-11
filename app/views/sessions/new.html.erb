@@ -1,0 +1,33 @@
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+
+<%= form_with url: session_path do |form| %>
+<div class="container" style="max-width: 500px; margin-top: 100px;">
+  <div class="card">
+    <div class="card-header text-center">
+    <h3>Log in</h3>
+    </div>
+    <div class="card-body">
+      <form>
+          <!-- Email -->
+          <div class="mb-3">
+            <%= form.label :email, class:"form-label" %><br />
+            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class:"form-control" %>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <%= form.label :password, class:"form-label" %><br />
+            <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class:"form-control" %>
+          </div>
+          <!-- Submit Button -->
+          <%= form.submit "Đăng nhập", class:"btn btn-primary w-100" %>
+          <div class="text-center mt-3">
+            <p class="mb-0 d-inline">Don't have an account?</p>
+            <%= link_to "Forgot password?", new_password_path, class:"text-decoration-none" %>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% end %>

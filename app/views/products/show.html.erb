@@ -1,0 +1,14 @@
+<div class="mb-2">
+  <% cache @product do %>
+    <h1><%= @product.name %></h1>
+    <%= @product.description %>
+    <%= image_tag @product.featured_image, style: "width: 200px; height: 200px; object-fit: cover;", alt: @product.name if @product.featured_image.attached? %>
+  <% end %>
+</div>
+<div style="display:flex; justify-content: space-between; width:200px">
+  <% if authenticated? %>
+  <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-secondary" %>
+  <%= button_to "Delete", @product, data: { turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger delete-button" %>
+  <% end %>
+  <%= link_to 'Back', products_path, class:"btn btn-dark" %>
+</div>
